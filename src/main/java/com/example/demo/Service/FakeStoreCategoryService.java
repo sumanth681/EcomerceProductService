@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class FakeStoreCategoryService implements  ICategoryService{
+public class FakeStoreCategoryService implements CategoryService {
 
     private CategoryGateway categoryGateway;
 

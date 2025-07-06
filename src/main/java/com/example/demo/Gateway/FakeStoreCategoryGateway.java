@@ -1,7 +1,7 @@
 package com.example.demo.Gateway;
 
 import com.example.demo.DTO.CategoryDTO;
-import com.example.demo.DTO.FakeStoreCategoryResponseDTO;
+import com.example.demo.DTO.CategoryResponseDTO;
 import com.example.demo.Gateway.api.FakeStoreCategoryApi;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ public class FakeStoreCategoryGateway implements  CategoryGateway{
 
     @Override
     public List<CategoryDTO> getAllCategories()  throws IOException {
-         FakeStoreCategoryResponseDTO response =  fakeStoreCategoryApi.getAllProductCategories().execute().body();
+         CategoryResponseDTO response =  fakeStoreCategoryApi.getAllProductCategories().execute().body();
 
          if(response == null){
              throw new IOException("Failed to fetch the Categories from the Fake Api Store");
