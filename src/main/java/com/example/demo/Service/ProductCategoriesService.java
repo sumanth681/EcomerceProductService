@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ProductCategoriesService implements ProductCategories{
     private final  ProductCategoriesGateway productCategoriesGateway;
-    public ProductCategoriesService(@Qualifier("sumanth") ProductCategoriesGateway productCategories) {
+    public ProductCategoriesService(@Qualifier("MyClassChoice") ProductCategoriesGateway productCategories) {
         this.productCategoriesGateway = productCategories;
     }
 
