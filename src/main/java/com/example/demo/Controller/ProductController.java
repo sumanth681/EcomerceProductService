@@ -3,10 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.Service.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/category")
@@ -19,6 +16,12 @@ public class ProductController {
 
     @GetMapping("/getProduct/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") long id) throws  Exception{ProductDTO result = productCategory.getAllProductByID(id);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/addProduct")
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws Exception {
+        ProductDTO result = productCategory.createProduct(productDTO);
         return ResponseEntity.ok(result);
     }
 

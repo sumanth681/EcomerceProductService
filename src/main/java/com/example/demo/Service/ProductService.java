@@ -16,4 +16,9 @@ public class ProductService implements ProductCategory{
     public ProductDTO getAllProductByID(long id) throws Exception {
         return this.productGateway.getPrductById(id);
     }
+
+    @Override
+    public ProductDTO createProduct(ProductDTO productDTO) throws Exception {
+        return null;
+    }
 }
