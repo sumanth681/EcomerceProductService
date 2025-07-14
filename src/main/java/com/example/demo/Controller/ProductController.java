@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.Service.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private final ProductCategory productCategory;
 
-    public ProductController(ProductCategory productCategory) {
+    public ProductController(@Qualifier("productServiceJPA") ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
 

@@ -7,7 +7,7 @@ import com.example.demo.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 
-@Service
+@Service("productServiceJPA")
 public class ProductServiceJPA  implements  ProductCategory{
     private final ProductRepository productRepository;
     public ProductServiceJPA(ProductRepository productRepository) {
@@ -19,7 +19,6 @@ public class ProductServiceJPA  implements  ProductCategory{
         return  productRepository.findById(id)
                 .map(ProductMapper::productEntToDTO)
                 .orElseThrow(() -> new Exception("Product not found with id: " + id));
-
     }
 
     @Override
@@ -27,4 +26,5 @@ public class ProductServiceJPA  implements  ProductCategory{
         ProductEntity productEntity = productRepository.save(ProductMapper.productDTOTOEnt(productDTO));
         return ProductMapper.productEntToDTO(productEntity);
     }
+
 }
