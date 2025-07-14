@@ -11,18 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/category")
 public class ProductController {
+    private final ProductCategory productCategory;
 
-    private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
+    public ProductController(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
-
 
     @GetMapping("/getProduct/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") long id) throws  Exception{
-        ProductDTO result = productService.getAllProductByID(id);
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") long id) throws  Exception{ProductDTO result = productCategory.getAllProductByID(id);
         return ResponseEntity.ok(result);
     }
+
 
 }
