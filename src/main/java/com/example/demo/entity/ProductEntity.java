@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -19,6 +21,12 @@ public class ProductEntity extends BaseEntity {
     private boolean onSale;
     private String model;
     private String title;
-    private String category;
     private String brand;
+
+
+    @ManyToOne
+    @JoinColumn(name ="category_id" , nullable = false)
+    private CategoryEntity category;
+
+
 }

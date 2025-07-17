@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class ProductDTO{
+	private int id;
 	private String image;
 	private String color;
 	private int price;
@@ -15,8 +16,7 @@ public class ProductDTO{
 	private int discount;
 	private boolean onSale;
 	private String model;
-	private int id;
 	private String title;
-	private String category;
+	private int  categoryId;
 	private String brand;
 }

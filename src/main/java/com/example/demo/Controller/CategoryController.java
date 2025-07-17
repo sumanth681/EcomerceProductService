@@ -1,13 +1,10 @@
 package com.example.demo.Controller;
 
-
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.Service.CategoryService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,8 +14,7 @@ public class CategoryController {
 
     private final CategoryService iCategoryService;
 
-
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(@Qualifier("CategoryServiceJPA") CategoryService categoryService) {
         this.iCategoryService = categoryService;
     }
 
@@ -28,4 +24,13 @@ public class CategoryController {
         return ResponseEntity.created(null).body(result);
     }
 
+    @PostMapping("/addCategory")
+    public CategoryDTO createCategory(@RequestBody CategoryDTO categoryDTO) throws IOException {
+        return iCategoryService.createCategory(categoryDTO);
+    }
+    @GetMapping("/getAllCategorys")
+    public ResponseEntity<List<CategoryDTO>> getAllCategorys() throws IOException {
+        List<CategoryDTO> result = iCategoryService.getAllCategorysByJpa();
+        return ResponseEntity.ok(result);
+    }
 }
