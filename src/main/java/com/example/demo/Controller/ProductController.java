@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DTO.ProductDTO;
+import com.example.demo.DTO.ProductWithCategoryDTO;
 import com.example.demo.Service.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,12 @@ public class ProductController {
     @PostMapping("/addProduct")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws Exception {
         ProductDTO result = productCategory.createProduct(productDTO);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/getProduct/{id}/withCategory")
+    public ResponseEntity<ProductWithCategoryDTO> getProductWithCategoryById(@PathVariable("id") long id) throws Exception {
+        ProductWithCategoryDTO result = productCategory.getProductWithCategoryById(id);
         return ResponseEntity.ok(result);
     }
 

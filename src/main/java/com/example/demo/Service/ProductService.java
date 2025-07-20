@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.DTO.ProductDTO;
+import com.example.demo.DTO.ProductWithCategoryDTO;
 import com.example.demo.Gateway.ProductGateway;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ public class ProductService implements ProductCategory{
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) throws Exception {
+        return null;
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategoryById(long id) {
         return null;
     }
 }

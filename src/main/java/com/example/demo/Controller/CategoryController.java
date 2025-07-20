@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DTO.CategoryDTO;
+import com.example.demo.DTO.CategoryWithProductsDTo;
 import com.example.demo.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +20,22 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+    public ResponseEntity<?> getAllCategories(@RequestParam(required = false) String name) throws IOException {
+
+        if(name != null && !name.isEmpty()){
+            CategoryDTO categoryDTO = iCategoryService.getCategoryByName(name);
+            return ResponseEntity.ok(categoryDTO);
+        }
         List<CategoryDTO> result =  iCategoryService.getAllCategorys();
         return ResponseEntity.created(null).body(result);
+    }
+
+    @GetMapping("/getCategory/{id}")
+    public CategoryDTO getCategoryBuId(@PathVariable("id") long id) throws IOException {
+
+
+        return iCategoryService.getCategoryById(id);
+
     }
 
     @PostMapping("/addCategory")
@@ -31,6 +45,12 @@ public class CategoryController {
     @GetMapping("/getAllCategorys")
     public ResponseEntity<List<CategoryDTO>> getAllCategorys() throws IOException {
         List<CategoryDTO> result = iCategoryService.getAllCategorysByJpa();
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/getCategory{id}/withProducts")
+    public ResponseEntity<CategoryWithProductsDTo> getCategoryWithProductsById(@PathVariable("id") long id) throws IOException {
+        CategoryWithProductsDTo result = iCategoryService.getAllProductsByCategoryId(id);
         return ResponseEntity.ok(result);
     }
 }

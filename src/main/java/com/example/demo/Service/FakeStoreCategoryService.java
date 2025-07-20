@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.DTO.CategoryDTO;
+import com.example.demo.DTO.CategoryWithProductsDTo;
 import com.example.demo.Gateway.CategoryGateway;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -34,4 +35,18 @@ public class FakeStoreCategoryService implements CategoryService {
         return List.of();
     }
 
+    @Override
+    public CategoryDTO getCategoryById(long id) {
+        return null;
+    }
+
+    @Override
+    public CategoryDTO getCategoryByName(String name) throws IOException {
+        return null;
+    }
+
+    @Override
+    public CategoryWithProductsDTo getAllProductsByCategoryId(long id){
+        return null;
+    }
 }

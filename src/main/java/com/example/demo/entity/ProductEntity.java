@@ -24,9 +24,8 @@ public class ProductEntity extends BaseEntity {
     private String brand;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
     @JoinColumn(name ="category_id" , nullable = false)
     private CategoryEntity category;
-
 
 }
