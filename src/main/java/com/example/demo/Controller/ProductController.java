@@ -3,7 +3,9 @@ package com.example.demo.Controller;
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.DTO.ProductWithCategoryDTO;
 import com.example.demo.Service.*;
+import com.example.demo.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +34,6 @@ public class ProductController {
         ProductWithCategoryDTO result = productCategory.getProductWithCategoryById(id);
         return ResponseEntity.ok(result);
     }
+
 
 }

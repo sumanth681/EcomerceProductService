@@ -3,6 +3,8 @@ package com.example.demo.Service;
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.DTO.ProductWithCategoryDTO;
 import com.example.demo.Gateway.ProductGateway;
+import com.example.demo.exception.ProductNotFoundException;
+import com.example.demo.mapper.ProductMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,9 +16,11 @@ public class ProductService implements ProductCategory{
     }
 
     @Override
-    public ProductDTO getAllProductByID(long id) throws Exception {
-        return this.productGateway.getPrductById(id);
+    public ProductDTO getAllProductByID(long id) throws  Exception {
+        return  this.productGateway.getPrductById(id); //                .mapEnt(ProductMapper::mapENT)
+//                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
     }
+
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) throws Exception {

@@ -4,6 +4,7 @@ import com.example.demo.DTO.ProductDTO;
 import com.example.demo.DTO.ProductWithCategoryDTO;
 import com.example.demo.entity.CategoryEntity;
 import com.example.demo.entity.ProductEntity;
+import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
@@ -21,10 +22,10 @@ public class ProductServiceJPA  implements  ProductCategory{
     }
 
     @Override
-    public ProductDTO getAllProductByID(long id) throws Exception {
+    public ProductDTO getAllProductByID(long id) {
         return  productRepository.findById(id)
                 .map(ProductMapper:: mapENT)
-                .orElseThrow(() -> new Exception("Product not found with id: " + id));
+                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
     }
 
     @Override
