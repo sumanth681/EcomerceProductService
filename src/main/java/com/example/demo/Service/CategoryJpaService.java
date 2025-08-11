@@ -5,6 +5,7 @@ import com.example.demo.DTO.CategoryWithProductsDTo;
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.entity.CategoryEntity;
 import com.example.demo.entity.ProductEntity;
+import com.example.demo.exception.CategoryNotFoundException;
 import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.repository.CategoryRepository;
@@ -35,7 +36,7 @@ public class CategoryJpaService implements CategoryService{
     public CategoryDTO getCategoryById(long id) {
         return categoryRepository.findById(id)
                 .map(CategoryMapper::mapEnt)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found with id: " + id));
     }
 
     @Override

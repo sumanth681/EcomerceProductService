@@ -10,12 +10,10 @@ import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
-
 @Service("productServiceJPA")
 public class ProductServiceJPA  implements  ProductCategory{
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
-
     public ProductServiceJPA(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
@@ -39,9 +37,9 @@ public class ProductServiceJPA  implements  ProductCategory{
 
     @Override
     public ProductWithCategoryDTO getProductWithCategoryById(long id) {
-    ProductEntity productEntity = productRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
-      return ProductMapper.mapEntWithCategory(productEntity);
+        ProductEntity productEntity = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        return ProductMapper.mapEntWithCategory(productEntity);
     }
 
 }

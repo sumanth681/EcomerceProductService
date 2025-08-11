@@ -19,4 +19,5 @@ public class ProductDTO{
 	private String title;
 	private int  categoryId;
 	private String brand;
+
 }
