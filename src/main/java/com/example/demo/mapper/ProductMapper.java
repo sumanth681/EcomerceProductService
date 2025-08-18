@@ -2,11 +2,11 @@ package com.example.demo.mapper;
 
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.DTO.ProductWithCategoryDTO;
-import com.example.demo.entity.CategoryEntity;
-import com.example.demo.entity.ProductEntity;
+import com.example.demo.entity.Category;
+import com.example.demo.entity.Product;
 
 public class ProductMapper {
-    public static ProductDTO  mapENT(ProductEntity productEntity){
+    public static ProductDTO  mapENT(Product productEntity){
         return ProductDTO.builder()
                 .title(productEntity.getTitle())
                 .id(productEntity.getId())
@@ -22,8 +22,8 @@ public class ProductMapper {
                 .categoryId(productEntity.getCategory().getId())
                 .build();
     }
-    public static ProductEntity mapDTO(ProductDTO productDTO , CategoryEntity categoryEntity){
-        return ProductEntity.builder()
+    public static Product mapDTO(ProductDTO productDTO , Category categoryEntity){
+        return Product.builder()
                 .title(productDTO.getTitle())
                 .price(productDTO.getPrice())
                 .description(productDTO.getDescription())
@@ -37,7 +37,7 @@ public class ProductMapper {
                 .build();
     }
 
-    public static ProductWithCategoryDTO mapEntWithCategory(ProductEntity productEntity){
+    public static ProductWithCategoryDTO mapEntWithCategory(Product productEntity){
         return  ProductWithCategoryDTO.builder()
                 .id(productEntity.getId())
                 .image(productEntity.getImage())

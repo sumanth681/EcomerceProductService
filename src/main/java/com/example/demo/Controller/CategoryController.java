@@ -33,7 +33,6 @@ public class CategoryController {
     @GetMapping("/getCategory/{id}")
     public CategoryDTO getCategoryBuId(@PathVariable("id") long id) throws IOException {
         return iCategoryService.getCategoryById(id);
-
     }
 
     @PostMapping("/addCategory")

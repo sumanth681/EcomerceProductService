@@ -3,18 +3,18 @@ package com.example.demo.mapper;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CategoryWithProductsDTo;
 import com.example.demo.DTO.ProductDTO;
-import com.example.demo.entity.CategoryEntity;
+import com.example.demo.entity.Category;
 
 import java.util.List;
 
 public class CategoryMapper {
-    public static CategoryDTO mapEnt(CategoryEntity categoryEntity){
+    public static CategoryDTO mapEnt(Category categoryEntity){
         return CategoryDTO.builder().name(categoryEntity.getName())
                 .id(categoryEntity.getId()).
                 build();
     }
-    public static CategoryEntity mapDto(CategoryDTO categoryDTO){
-        return CategoryEntity.builder()
+    public static Category mapDto(CategoryDTO categoryDTO){
+        return Category.builder()
                 .name(categoryDTO.getName())
                 .build();
     }

@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ProductEntity extends BaseEntity {
+public class Product extends BaseEntity {
     private String image;
     private String color;
     private int price;
@@ -23,9 +23,7 @@ public class ProductEntity extends BaseEntity {
     private String title;
     private String brand;
 
-
     @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
     @JoinColumn(name ="category_id" , nullable = false)
-    private CategoryEntity category;
-
+    private Category category;
 }

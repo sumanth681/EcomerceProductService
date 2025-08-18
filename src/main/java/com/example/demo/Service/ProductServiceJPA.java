@@ -2,8 +2,8 @@ package com.example.demo.Service;
 
 import com.example.demo.DTO.ProductDTO;
 import com.example.demo.DTO.ProductWithCategoryDTO;
-import com.example.demo.entity.CategoryEntity;
-import com.example.demo.entity.ProductEntity;
+import com.example.demo.entity.Category;
+import com.example.demo.entity.Product;
 import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.repository.CategoryRepository;
@@ -28,16 +28,16 @@ public class ProductServiceJPA  implements  ProductCategory{
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) throws Exception {
-        CategoryEntity category = categoryRepository.findById( (long) productDTO.getCategoryId())
+        Category category = categoryRepository.findById( (long) productDTO.getCategoryId())
                 .orElseThrow(() -> new Exception("Category not found with id: " + productDTO.getCategoryId()));
 
-        ProductEntity productEntity = productRepository.save(ProductMapper.mapDTO(productDTO, category));
+        Product productEntity = productRepository.save(ProductMapper.mapDTO(productDTO, category));
         return ProductMapper.mapENT(productEntity);
     }
 
     @Override
     public ProductWithCategoryDTO getProductWithCategoryById(long id) {
-        ProductEntity productEntity = productRepository.findById(id)
+        Product productEntity = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
         return ProductMapper.mapEntWithCategory(productEntity);
     }
