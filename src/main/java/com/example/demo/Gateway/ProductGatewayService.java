@@ -21,6 +21,5 @@ public class ProductGatewayService  implements  ProductGateway{
             throw new Exception("Product not found");
         }
         return response.getProduct();
-
     }
 }

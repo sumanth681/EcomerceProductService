@@ -31,6 +31,13 @@ public class CategoryJpaService implements CategoryService{
     }
 
     @Override
+    public List<CategoryDTO> getAllCategorysByJpa() {
+        List<Category> categoryEntities = categoryRepository.findAll();
+        return  categoryEntities.stream().map(CategoryMapper::mapEnt)
+                .toList();
+    }
+
+    @Override
     public CategoryDTO getCategoryById(long id) {
         return categoryRepository.findById(id)
                 .map(CategoryMapper::mapEnt)
@@ -51,12 +58,6 @@ public class CategoryJpaService implements CategoryService{
         return CategoryMapper.mapEnt(response);
     }
 
-    @Override
-    public List<CategoryDTO> getAllCategorysByJpa() {
-        List<Category> categoryEntities = categoryRepository.findAll();
-        return  categoryEntities.stream().map(CategoryMapper::mapEnt)
-                .toList();
-    }
 
     @Override
     public CategoryWithProductsDTo getAllProductsByCategoryId(long id) {
@@ -70,11 +71,8 @@ public class CategoryJpaService implements CategoryService{
                 .stream()
                 .map(ProductMapper::mapENT)
                 .toList();
-
         return  CategoryMapper.mapIt(categoryDTO , productEntities);
     }
-
-
 
 
 }

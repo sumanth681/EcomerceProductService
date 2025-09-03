@@ -9,7 +9,8 @@ import java.util.List;
 
 public class CategoryMapper {
     public static CategoryDTO mapEnt(Category categoryEntity){
-        return CategoryDTO.builder().name(categoryEntity.getName())
+        return CategoryDTO.builder()
+                .name(categoryEntity.getName())
                 .id(categoryEntity.getId()).
                 build();
     }

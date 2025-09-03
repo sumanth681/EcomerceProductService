@@ -28,7 +28,7 @@ public class ProductServiceJPA  implements  ProductCategory{
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) throws Exception {
-        Category category = categoryRepository.findById( (long) productDTO.getCategoryId())
+        Category category = categoryRepository.findById( (long)  productDTO.getCategoryId())
                 .orElseThrow(() -> new Exception("Category not found with id: " + productDTO.getCategoryId()));
 
         Product productEntity = productRepository.save(ProductMapper.mapDTO(productDTO, category));

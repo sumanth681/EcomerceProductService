@@ -1,9 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,8 +14,8 @@ import java.time.Instant;
 @Data
 @Getter
 @Setter
-
 public class BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -36,6 +35,7 @@ public class BaseEntity {
         this.createdBy = now;
         this.updatedBy = now;
     }
+
     @PreUpdate
     public void onUpdate() {
         this.updatedBy = Instant.now();
