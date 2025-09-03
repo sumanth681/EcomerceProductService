@@ -20,7 +20,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<?> getAllCategories(@RequestParam(required = false) String name) throws IOException {
+    public ResponseEntity<?> getAllCategoriesByName(@RequestParam(required = false) String name) throws IOException {
 
         if(name != null && !name.isEmpty()){
             CategoryDTO categoryDTO = iCategoryService.getCategoryByName(name);
@@ -31,7 +31,7 @@ public class CategoryController {
     }
 
     @GetMapping("/getCategory/{id}")
-    public CategoryDTO getCategoryBuId(@PathVariable("id") long id) throws IOException {
+    public CategoryDTO getCategoryById(@PathVariable("id") long id) throws IOException {
         return iCategoryService.getCategoryById(id);
     }
 
@@ -39,8 +39,10 @@ public class CategoryController {
     public CategoryDTO createCategory(@RequestBody CategoryDTO categoryDTO) throws IOException {
         return iCategoryService.createCategory(categoryDTO);
     }
-    @GetMapping("/getAllCategorys")
-    public ResponseEntity<List<CategoryDTO>> getAllCategorys() throws IOException {
+
+
+    @GetMapping("/getAllCategories")
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
         List<CategoryDTO> result = iCategoryService.getAllCategorysByJpa();
         return ResponseEntity.ok(result);
     }
